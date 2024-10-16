@@ -1,0 +1,436 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0%;
+  padding: 0%;
+}
+
+header {
+  background-color: #4383d8;
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  width: auto;
+}
+
+p {
+  padding: 2rem;
+  justify-content: right;
+}
+
+@keyframes rotate3D {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+
+  50% {
+    transform: rotateY(15deg) rotateX(5deg);
+  }
+
+  100% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 8px #4383d8, 0 0 16px #4383d8, 0 0 32px #4383d8;
+  }
+
+  50% {
+    text-shadow: 0 0 16px #4383d8, 0 0 32px #4383d8, 0 0 64px #4383d8;
+  }
+
+  100% {
+    text-shadow: 0 0 8px #4383d8, 0 0 16px #4383d8, 0 0 32px #4383d8;
+  }
+}
+
+@keyframes colorChange {
+
+  0%,
+  100% {
+    color: #ffffff;
+  }
+
+  50% {
+    color: #4383d8;
+  }
+}
+
+.animated-title {
+
+  right: 0;
+  top: 20px;
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: glow 5s ease-in-out infinite, rotate3D 10s ease-in-out infinite, colorChange 3s ease-in-out infinite;
+  transition: transform 0.5s ease, text-shadow 0.5s ease;
+  display: inline-block;
+  perspective: 1000px;
+}
+
+.animated-title:hover {
+  transform: scale(1.2) rotateY(10deg) rotateX(5deg);
+  text-shadow: 0 0 32px #4383d8, 0 0 64px #4383d8, 0 0 128px #4383d8;
+}
+
+
+p {
+  font-size: 1.1rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.cuerpo {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulos {
+  color: black;
+  font-size: 1.6rem;
+}
+
+#contactos {
+  display: flex;
+  justify-content: center;
+  align-items: normal;
+  background: white;
+  border-radius: 10px;
+}
+
+
+
+
+#menu {
+  position: absolute;
+  margin-top: -3rem;
+  margin-left: auto;
+  position: re;
+  display: flex;
+
+  li {
+    list-style: none;
+
+    a {
+      position: relative;
+      display: block;
+      text-transform: uppercase;
+      margin: 20px 0;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+
+      transition: .5s;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-top: 2px solid #262626;
+        border-bottom: 2px solid #262626;
+        transform: scaleY(2);
+        opacity: 0;
+        transition: .3s;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #262626;
+        transform: scale(0);
+        opacity: 0;
+        transition: .3s;
+        z-index: -1;
+      }
+
+      &:hover {
+        color: #fff;
+
+        &:before {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+
+        &:after {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 3rem;
+}
+
+
+
+ul li a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: black;
+}
+
+ul li {
+  display: flex;
+  margin: 0 5rem;
+  margin-bottom: 29px;
+}
+
+
+
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666666;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.btn-submit {
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+.btn-submit:hover {
+  background: #0056b3;
+}
+
+#descripcion {
+  font-size: 19px;
+  transform: scale(1);
+  line-height: 12px;
+  resize: none;
+  text-size-adjust: 12px;
+
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 12px;
+  margin-right: 3rem;
+}
+
+.contact-icon {
+  width: 24px;
+  margin-right: 10px;
+}
+
+.social-media {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.social-media li {
+  margin: 0 15px;
+}
+
+.redes {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+#contactos h2 {
+  margin-top: -10px;
+}
+
+#contactos h3 {
+  margin-top: -8px;
+  margin-left: 100px;
+}
+
+#insta:hover {
+  color: #d80ed8;
+}
+
+#facebook:hover {
+  color: #006dfc;
+}
+
+#x:hover {
+  color: #333;
+}
+
+.logoImagen {
+  height: 35px;
+  margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
+@keyframes aparecer {
+  from {
+    transform: translateZ(-100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
+.curso:hover {
+  transform: translateY(-5px);
+}
+
+.curso-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.curso h3 {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-bottom: 10px;
+  justify-items: center;
+}
+
+.curso p {
+  color: #666666;
+  font-size: 1rem;
+}
+
+.curso button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.curso button:hover {
+  background-color: #0056b3;
+}
+
+
+
+.curso .eliminar:hover,
+.curso .eliminar:focus {
+  box-shadow: inset 0 0 0 2em var(--hover);
+}
+
+.curso .eliminar {
+  --color: #ff0000;
+  --hover: #cc4f4f;
+}
+
+.curso .eliminar {
+  color: var(--color);
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.curso .eliminar:hover,
+.curso .eliminar:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+
+
+.curso .eliminar {
+  background: none;
+  border: 1px solid;
+  font: inherit;
+  padding: 4px;
+  margin-top: -5rem;
+}
+
+
+.detalles-curso {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+  display: none;
+}
+
+
+
+.eliminando {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+#listaCursos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
