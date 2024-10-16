@@ -34,5 +34,7 @@ export class CursosComponent implements OnInit{
     if (index !== -1) {
       this.cursos.splice(index, 1)
     }
-  }  
+  }
+  
+  
 }
