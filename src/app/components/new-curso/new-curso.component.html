@@ -6,7 +6,6 @@
                 <label for="nombreCurso">Nombre del Curso</label>
                 <input type="text" id="nombreCurso" name="nombreCurso" required placeholder="Programación" [(ngModel)]="nomCurso">
             </div>
-            
             <div class="form-group">
                 <label for="nombreProfesor">Nombre del Profesor</label>
                 <input type="text" id="nombreProfesor" name="nombreProfesor" required placeholder="Jose Castro" [(ngModel)]="nomProfesor">
@@ -24,7 +23,7 @@
                 <label for="descripcion">Descripción</label>
                 <textarea id="descripcion" name="descripcion" rows="4" required [(ngModel)]="descripcion"></textarea>
             </div>
-            <button type="submit" class="btn-submit" id="bnt-subir" (click)="saveCursosLocalStorage(nomCurso, nomProfesor, fechaInicio, fechaFinal, descripcion) ">Agregar Curso</button>
+            <button type="submit" class="btn-submit" id="bnt-subir" (click)="saveCursos(nomCurso, nomProfesor, fechaInicio, fechaFinal, descripcion) ">Agregar Curso</button>
             
         </form>
     </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { ServicioCursosService } from '../../servicio-cursos.service';
 
 @Component({
   selector: 'app-new-curso',
@@ -18,14 +18,10 @@ export class NewCursoComponent {
   descripcion: string = '';
   listaCursos: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string }[] = []
 
-  constructor() {
-    this.listaCursos = JSON.parse(localStorage.getItem('listaCursos') || '[]');
-  }
-  saveCursosLocalStorage(nomCurso: string, nomProfesor: string, fechaInicio: Date, fechaFinal: Date, descripcion: string) {
-    let curso = { nomCurso: nomCurso, nomProfesor: nomProfesor, fechaInicio: fechaInicio, fechaFinal: fechaFinal, descripcion: descripcion }
-    this.listaCursos.push(curso)
-    localStorage.setItem('listaCursos', JSON.stringify(this.listaCursos));
-    
+  constructor(private servicioCurso: ServicioCursosService){}
+  saveCursos(nomCurso: string, nomProfesor: string, fechaInicio: Date, fechaFinal: Date, descripcion: string) {
+    this.servicioCurso.nuevoCurso(nomCurso, nomProfesor, fechaInicio, fechaFinal, descripcion);
+    //localStorage.setItem('listaCursos', JSON.stringify(this.listaCursos));
     this.limpiarCampos();
   }
 
