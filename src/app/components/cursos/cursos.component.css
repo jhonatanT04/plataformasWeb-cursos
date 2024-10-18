@@ -24,7 +24,7 @@ section {
     animation: aparecer 0.8s ease forwards;
 }
 
-/*
+
 
 @keyframes aparecer {
     from {
@@ -35,16 +35,11 @@ section {
         transform: translateZ(0);
         opacity: 1;
     }
-} */
-.curso:hover {
-    transform: translateY(-5px);
-}
+} 
 
-.curso-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
+
+
 
 .curso h3 {
     font-size: 1.5rem;
@@ -56,6 +51,7 @@ section {
 .curso p {
     color: #666666;
     font-size: 1rem;
+    
 }
 
 .curso .bnt-descripcion {

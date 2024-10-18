@@ -9,16 +9,29 @@ import { ServicioCursosService } from '../../servicio-cursos.service';
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.css'
 })
-export class CursosComponent implements OnInit  {  
-  cursos: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string }[] = localStorage.getItem('listaCursos') ? JSON.parse(localStorage.getItem('listaCursos')!) : [];
-  eliminarCurso(curso: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string }) {
+export class CursosComponent implements OnInit {
+  cursos: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string,duracion:number }[] =[]
+  eliminarCurso(curso: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string ,duracion:number}) {
     this.servicioCurso.eliminarCurso(curso)
   }
-  constructor(private servicioCurso: ServicioCursosService) {}
-  
-  ngOnInit(): void{
-    this.cursos=this.servicioCurso.cargarCursos();
+  constructor(private servicioCurso: ServicioCursosService) { }
+
+  ngOnInit(): void {
+    this.cursos = this.servicioCurso.cargarCursos();
+    this.mostrarDetalles = new Array(this.cursos.length).fill(false);
   }
+  mostrarDetalles: boolean[] = [];
+  toggleDetalles(index: number): void {
+    this.mostrarDetalles[index] = !this.mostrarDetalles[index];
+  }
+  elimi(){
+    localStorage.clear();
+  }
+
+  
+
+
+
 }
 
 

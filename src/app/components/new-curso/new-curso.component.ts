@@ -16,13 +16,43 @@ export class NewCursoComponent {
   fechaInicio: Date = new Date();
   fechaFinal: Date = new Date();
   descripcion: string = '';
-  listaCursos: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string }[] = []
 
-  constructor(private servicioCurso: ServicioCursosService){}
+  listaCursos: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string, duracion: number }[] = []
+
+  constructor(private servicioCurso: ServicioCursosService) { }
   saveCursos(nomCurso: string, nomProfesor: string, fechaInicio: Date, fechaFinal: Date, descripcion: string) {
-    this.servicioCurso.nuevoCurso(nomCurso, nomProfesor, fechaInicio, fechaFinal, descripcion);
-    //localStorage.setItem('listaCursos', JSON.stringify(this.listaCursos));
-    this.limpiarCampos();
+    const duracion = this.calcularDuracionCurso(fechaInicio, fechaFinal);
+
+    if (this.validacionDatos()) {
+      this.servicioCurso.nuevoCurso(nomCurso, nomProfesor, fechaInicio, fechaFinal, descripcion, duracion);
+      //localStorage.setItem('listaCursos', JSON.stringify(this.listaCursos));
+      this.limpiarCampos();
+    }
+
+  }
+  calcularDuracionCurso(fechaInicio: Date, fechaFinal: Date): number {
+    const fechaInicioDate = new Date(fechaInicio);
+    const fechaFinalDate = new Date(fechaFinal);
+
+    if (isNaN(fechaInicioDate.getTime()) || isNaN(fechaFinalDate.getTime())) {
+      console.error("Las fechas no son válidas");
+      return 0;
+    }
+
+    const unDia = 1000 * 60 * 60 * 24;
+    const diferenciaMilisegundos = fechaFinalDate.getTime() - fechaInicioDate.getTime();
+    return Math.round(diferenciaMilisegundos / unDia);
+  }
+
+  validacionDatos(): boolean {
+    if (this.nomCurso.trim() !== '' && this.nomProfesor.trim() !== '' && this.descripcion.trim() !== '') {
+      alert('Ingrese los datos correctamente')
+      return false;
+    } else if (this.fechaInicio <= this.fechaFinal) {
+      alert('Ingrese las fechas correctamente')
+      return false;
+    }
+    return true;
   }
 
   limpiarCampos() {
@@ -32,7 +62,7 @@ export class NewCursoComponent {
     this.fechaFinal = new Date();
     this.descripcion = '';
   }
-  
+
   /*most() {
     let mensaje = document.createElement('div');
     mensaje.classList.add('mensaje-desaparecer'); // Agregar la clase
@@ -45,9 +75,9 @@ export class NewCursoComponent {
     mensaje.style.padding = '10px';
     mensaje.style.border = '1px solid black';
     mensaje.style.zIndex = '1'
-    // Agregar el elemento al body
+    
     document.body.appendChild(mensaje);
-    // Ocultar el elemento después de un tiempo
+    
     setTimeout(() => {
       mensaje.style.opacity = '0';
       setTimeout(() => {
