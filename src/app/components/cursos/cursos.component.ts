@@ -19,7 +19,6 @@ export class CursosComponent implements OnInit  {
   ngOnInit(): void{
     this.cursos=this.servicioCurso.cargarCursos();
   }
-  
 }
 
 
