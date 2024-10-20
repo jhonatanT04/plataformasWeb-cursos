@@ -17,11 +17,7 @@ export class InicioComponent implements OnInit {
     // Llama al servicio para obtener la geolocalización
     this.ubicacionClien.getIpInfo('check')  
       .subscribe(data => {
-        this.geoLocationData = data;
-        console.log(this.geoLocationData);  
-      }, error => {
-        console.error('Error al obtener la geolocalización:', error);
-      });
+        this.geoLocationData = data; console.log(this.geoLocationData);  }, error => {console.error('Error al obtener la geolocalización:', error);});
   }
 
 }
