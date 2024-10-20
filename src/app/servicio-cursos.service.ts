@@ -21,7 +21,7 @@ export class ServicioCursosService {
     if (index !== -1) {
       this.cursos.splice(index, 1);
       console.log(this.cursos)
-      localStorage.setItem('listaCurs', JSON.stringify(this.cursos));
+      localStorage.setItem('listaCursos', JSON.stringify(this.cursos));
     }
   }
 }

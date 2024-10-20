@@ -25,11 +25,6 @@ export class CursosComponent implements OnInit {
     this.mostrarDetalles[index] = !this.mostrarDetalles[index];
   }
   
-
-  
-
-
-
 }
 
 

@@ -7,6 +7,7 @@ import { InicioComponent } from "./pages/inicio/inicio.component";
 import { ContactosComponent } from "./pages/contactos/contactos.component";
 import { UbicacionService } from './service/ubicacion.service';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

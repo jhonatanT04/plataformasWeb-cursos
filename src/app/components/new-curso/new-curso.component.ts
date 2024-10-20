@@ -19,7 +19,7 @@ export class NewCursoComponent {
 
   constructor(private servicioCurso: ServicioCursosService) { }
   saveCursos(nomCurso: string, nomProfesor: string, fechaInicio: Date, fechaFinal: Date, descripcion: string) {
-    const duracion = 1;
+    const duracion = this.calcularDuracionCurso(fechaInicio, fechaFinal);
 
     if (this.validacionDatos()) {
       this.servicioCurso.nuevoCurso(nomCurso, nomProfesor, fechaInicio, fechaFinal, descripcion, duracion);
@@ -32,7 +32,6 @@ export class NewCursoComponent {
     const fechaFinalDate = new Date(fechaFinal);
 
     if (isNaN(fechaInicioDate.getTime()) || isNaN(fechaFinalDate.getTime())) {
-      
       return 0;
     }
 
@@ -46,7 +45,7 @@ export class NewCursoComponent {
       alert('Ingrese los datos correctamente')
       return false;
     } else if (this.fechaInicio >= this.fechaFinal) {
-      alert('Ingrese las fechas correctamente')
+      alert('Ingrese las fechas correctamente debe ser mayor a la actual')
       return false;
     }
     return true;
