@@ -11,7 +11,9 @@ export class UbicacionService {
   constructor(private http: HttpClient) {}
 
   getIpInfo(ip: string): Observable<any> {
-    const url = `${this.apiUrl}${ip}?access_key=ec925514259e42490d7625dfce56093f`;
+    
+    const url = `${this.apiUrl}${ip}?access_key=`;//ec925514259e42490d7625dfce56093f
     return this.http.get(url);  
+    
   }
 }
