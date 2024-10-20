@@ -24,9 +24,7 @@ export class CursosComponent implements OnInit {
   toggleDetalles(index: number): void {
     this.mostrarDetalles[index] = !this.mostrarDetalles[index];
   }
-  elimi(){
-    localStorage.clear();
-  }
+  
 
   
 

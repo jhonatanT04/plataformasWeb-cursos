@@ -6,4 +6,4 @@ import { ServicioCursosService } from './servicio-cursos.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),ServicioCursosService]
-};
+}; 

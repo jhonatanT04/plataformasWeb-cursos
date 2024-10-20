@@ -17,15 +17,12 @@ export class NewCursoComponent {
   fechaFinal: Date = new Date();
   descripcion: string = '';
 
-  listaCursos: { nomCurso: string, nomProfesor: String, fechaInicio: Date, fechaFinal: Date, descripcion: string, duracion: number }[] = []
-
   constructor(private servicioCurso: ServicioCursosService) { }
   saveCursos(nomCurso: string, nomProfesor: string, fechaInicio: Date, fechaFinal: Date, descripcion: string) {
-    const duracion = this.calcularDuracionCurso(fechaInicio, fechaFinal);
+    const duracion = 1;
 
     if (this.validacionDatos()) {
       this.servicioCurso.nuevoCurso(nomCurso, nomProfesor, fechaInicio, fechaFinal, descripcion, duracion);
-      //localStorage.setItem('listaCursos', JSON.stringify(this.listaCursos));
       this.limpiarCampos();
     }
 
@@ -35,7 +32,7 @@ export class NewCursoComponent {
     const fechaFinalDate = new Date(fechaFinal);
 
     if (isNaN(fechaInicioDate.getTime()) || isNaN(fechaFinalDate.getTime())) {
-      console.error("Las fechas no son válidas");
+      
       return 0;
     }
 
@@ -45,10 +42,10 @@ export class NewCursoComponent {
   }
 
   validacionDatos(): boolean {
-    if (this.nomCurso.trim() !== '' && this.nomProfesor.trim() !== '' && this.descripcion.trim() !== '') {
+    if (this.nomCurso.trim() === '' && this.nomProfesor.trim() === '' && this.descripcion.trim() === '') {
       alert('Ingrese los datos correctamente')
       return false;
-    } else if (this.fechaInicio <= this.fechaFinal) {
+    } else if (this.fechaInicio >= this.fechaFinal) {
       alert('Ingrese las fechas correctamente')
       return false;
     }
